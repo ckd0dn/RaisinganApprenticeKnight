@@ -1,2 +1,2 @@
-# ReglectGame
+# LeglectGame
 방치형 게임 개발
