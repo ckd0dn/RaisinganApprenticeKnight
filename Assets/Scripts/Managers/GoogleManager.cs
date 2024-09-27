@@ -6,10 +6,10 @@ public class GoogleManager : Singleton<GoogleManager>
 {
     public TextMeshProUGUI logText;
 
-    private void Start()
-    {
-        SingIn();
-    }
+    //private void Start()
+    //{
+    //    SingIn();
+    //}
 
     public void SingIn()
     {
@@ -21,7 +21,7 @@ public class GoogleManager : Singleton<GoogleManager>
                 string id = PlayGamesPlatform.Instance.GetUserId();
                 string imgUrl = PlayGamesPlatform.Instance.GetUserImageUrl();
 
-                logText.text = "Sucess \n" + name;
+                logText.text = "Sucess \n" + name + "\n" + id + "\n" + imgUrl;
             }
             else
             {
@@ -30,20 +30,4 @@ public class GoogleManager : Singleton<GoogleManager>
         });
     }
 
-
-    //internal void ProcessAuthentication(SignInStatus status)
-    //{
-    //    if (status == SignInStatus.Success)
-    //    {
-    //        string name = PlayGamesPlatform.Instance.GetUserDisplayName();
-    //        string id = PlayGamesPlatform.Instance.GetUserId();
-    //        string imgUrl = PlayGamesPlatform.Instance.GetUserImageUrl();
-
-    //        logText.text = "Sucess \n" + name;
-    //    }
-    //    else
-    //    {
-    //        logText.text = "Failed ";
-    //    }
-    //}
 }
