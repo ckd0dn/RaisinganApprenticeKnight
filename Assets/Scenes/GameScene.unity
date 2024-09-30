@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 10
+  serializedVersion: 9
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -44,6 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 12
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -66,6 +67,9 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
+    m_FinalGather: 0
+    m_FinalGatherFiltering: 1
+    m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
     m_BakeBackend: 0
@@ -307,9 +311,6 @@ TilemapRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7134,7 +7135,6 @@ TilemapCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 729015234}
   m_Enabled: 1
-  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -7158,8 +7158,7 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
@@ -7181,9 +7180,6 @@ TilemapRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -7965,7 +7961,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8510694323457583263, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
   m_PrefabInstance: {fileID: 1689155418181302699}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1637496196
+--- !u!114 &1637496192
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7974,9 +7970,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1637496191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f122ac68519eaa84bae9a36df5d99484, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d6717abbda365543b6d16b87955e35f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  monsterObjectPool: {fileID: 0}
+  closestMonster: {fileID: 0}
 --- !u!1 &1724840935
 GameObject:
   m_ObjectHideFlags: 0
@@ -8071,19 +8070,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4873809602622995898, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
-      propertyPath: 'monsters.Array.data[0]'
+      propertyPath: monsters.Array.data[0]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4873809602622995898, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
-      propertyPath: 'monsters.Array.data[1]'
+      propertyPath: monsters.Array.data[1]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4873809602622995898, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
-      propertyPath: 'monsters.Array.data[2]'
+      propertyPath: monsters.Array.data[2]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4873809602622995898, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
-      propertyPath: 'monsters.Array.data[3]'
+      propertyPath: monsters.Array.data[3]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8509111274063667505, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
@@ -8134,7 +8133,12 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8596291599017044663, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b450bb0a68596514eb2a9979301c4c10, type: 2}
+    m_RemovedComponents:
+    - {fileID: 4873809602622995898, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8509111274063667505, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
@@ -8143,7 +8147,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8510694323457583263, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1637496196}
+      addedObject: {fileID: 1637496192}
   m_SourcePrefab: {fileID: 100100000, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
