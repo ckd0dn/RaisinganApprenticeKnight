@@ -9,11 +9,7 @@ public class GameManager : Singleton<GameManager>
     protected override void Awake()
     {
         monsterObjectPool = FindFirstObjectByType<MonsterObjectPool>();
-    }
-
-    private void Start()
-    {
-        SpawnMonsters();
+        SpawnMonsters(); 
     }
 
     void SpawnMonsters()

@@ -7946,7 +7946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a88b98b0ae71cf44d9e9407f38724d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterPrefab: {fileID: 3149348324518401136, guid: 5d098e95c8ec181449bb68d0790aa99c, type: 3}
+  monsterPrefab: {fileID: 4961394320661282187, guid: 5d098e95c8ec181449bb68d0790aa99c, type: 3}
   collectionCheck: 1
   defaultCapacity: 20
   maxSize: 100
@@ -7976,6 +7976,52 @@ MonoBehaviour:
   animator: {fileID: 0}
   monsterObjectPool: {fileID: 0}
   closestMonster: {fileID: 0}
+  statHandler: {fileID: 0}
+  healthSystem: {fileID: 0}
+--- !u!114 &1637496197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637496191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea196caea4c8c048ac5f307d4d19ba8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 0
+--- !u!114 &1637496198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637496191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ea01b61d4c77f64abd48ece521d3fba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseStats: {fileID: 11400000, guid: 4b7f6c8e55ecef245b74e45b54993062, type: 2}
+  currentHp: 0
+  maxHp: 0
+  currentAtk: 0
+  currentCriticalChance: 0
+  currentCriticalDamage: 0
+  currentTotalDamage: 0
+--- !u!114 &1637496202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637496191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fe27338831ce64f8a7af6410225523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1724840935
 GameObject:
   m_ObjectHideFlags: 0
@@ -8137,6 +8183,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: b450bb0a68596514eb2a9979301c4c10, type: 2}
+    - target: {fileID: 8596291599017044663, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4873809602622995898, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
     m_RemovedGameObjects: []
@@ -8148,6 +8198,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8510694323457583263, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1637496192}
+    - targetCorrespondingSourceObject: {fileID: 8510694323457583263, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1637496197}
+    - targetCorrespondingSourceObject: {fileID: 8510694323457583263, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1637496198}
+    - targetCorrespondingSourceObject: {fileID: 8510694323457583263, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1637496202}
   m_SourcePrefab: {fileID: 100100000, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

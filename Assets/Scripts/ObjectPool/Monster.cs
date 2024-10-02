@@ -9,13 +9,40 @@ public class Monster : MonoBehaviour
 
     public IObjectPool<Monster> ObjectPool { set => objectPool = value; }
 
-    private Player player;
+    public Player player;
 
     [SerializeField] private float speed;
 
+    public HealthSystem healthSystem;
+    public StatHandler statHandler;
+    public Animator animator;
+    public MonsterAnimationData animationData;
+
+    private MonsterStateMachine stateMachine;
+
+    public bool isDie = false;
+
     private void Awake()
     {
-        player = FindFirstObjectByType<Player>();    
+        player = FindFirstObjectByType<Player>();
+        healthSystem = GetComponent<HealthSystem>();
+        statHandler = GetComponent<StatHandler>();
+        animator = GetComponent<Animator>(); 
+        animationData = new MonsterAnimationData();
+        animationData.Init();
+
+        stateMachine = new MonsterStateMachine(this);
+    }
+
+    private void Start()
+    {
+        healthSystem.OnDeath += Die;
+        stateMachine.ChangeState(stateMachine.MoveState);
+    }
+
+    private void Update()
+    {
+        stateMachine.Update();
     }
 
     private void OnDisable()
@@ -23,20 +50,25 @@ public class Monster : MonoBehaviour
         Invoke("Set", 3f);
     }
 
-    private void FixedUpdate()
-    {
-        MoveToPlayer();
-    }
 
     public void Set()
     {
         Monster monster = objectPool.Get();
+
+        // 위치 랜덤으로 정함
         SetRandomPosition(monster);
+
+        // 스탯 초기화
+        statHandler.InitializeStats();
+        isDie = false;
+
+        // 초기화되면 이동
+        stateMachine.ChangeState(stateMachine.MoveState); 
     }
 
     public void Die()
     {
-        objectPool.Release(this);
+        stateMachine.ChangeState(stateMachine.DieState);
     }
 
     public void SetRandomPosition(Monster monster)
@@ -51,9 +83,9 @@ public class Monster : MonoBehaviour
         monster.transform.position = new Vector3(randomOffsetX, randomOffsetY, transform.position.z);
     }
 
-    void MoveToPlayer()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-    }
+    //public void MoveToPlayer()
+    //{
+    //    transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+    //}
 
 }

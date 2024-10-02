@@ -13,22 +13,28 @@ public class Player : MonoBehaviour
     public MonsterObjectPool monsterObjectPool;
     public Monster closestMonster;  // 가장 가까운 몬스터 저장
 
+    public StatHandler statHandler; 
+    public HealthSystem healthSystem;
+
     private void Awake()
     {
         stateMachine = new PlayerStateMachine(this);
 
-        animator = GetComponentInChildren<Animator>();  
+        animator = GetComponentInChildren<Animator>();
+        statHandler = GetComponent<StatHandler>();
+        healthSystem = GetComponent<HealthSystem>();
 
         animationData = new PlayerAnimationData();
         animationData.Init();
-
-        monsterObjectPool = FindFirstObjectByType<MonsterObjectPool>();
 
     }
 
     private void Start()
     {
-        stateMachine.ChangeState(stateMachine.MoveState);   
+        monsterObjectPool = FindFirstObjectByType<MonsterObjectPool>();
+
+        StartCoroutine(WaitMonsterObjectPool());
+
     }
 
     private void Update()
@@ -36,22 +42,19 @@ public class Player : MonoBehaviour
         stateMachine.Update();
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    IEnumerator WaitMonsterObjectPool()
     {
-        int monsterLayer = LayerMask.NameToLayer("Monster");
+        bool isMonster = false;
 
-        // 충돌한 오브젝트의 레이어가 "Monster"인지 확인
-        if (collision.gameObject.layer == monsterLayer)
+        while (!isMonster)
         {
-            stateMachine.ChangeState(stateMachine.AttackState);
-
-            // 충돌한 오브젝트 비활성화
-            Monster monster = collision.gameObject.GetComponent<Monster>();
-            monster.Die();
-            //collision.gameObject.SetActive(false);  
+            if (stateMachine.Player.monsterObjectPool.monsters.Count != 0)
+            {
+                stateMachine.ChangeState(stateMachine.MoveState);
+                isMonster = true;
+            }
+            yield return null;
         }
     }
-
 
 }

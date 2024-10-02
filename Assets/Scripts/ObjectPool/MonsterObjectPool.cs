@@ -21,6 +21,9 @@ public class MonsterObjectPool : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("몬스터 오브젝트플 생성");
+
+
         objectPool = new ObjectPool<Monster>(CreateMonster,
             OnGetFromPool, OnReleaseToPool, OnDestroyPooledObject,
             collectionCheck, defaultCapacity, maxSize);
@@ -30,6 +33,8 @@ public class MonsterObjectPool : MonoBehaviour
     // invoked when creating an item to populate the object pool
     private Monster CreateMonster()
     {
+        Debug.Log("몬스터 생성");
+
         Monster monsterInstance = Instantiate(monsterPrefab, transform);
         monsterInstance.ObjectPool = objectPool;
 
