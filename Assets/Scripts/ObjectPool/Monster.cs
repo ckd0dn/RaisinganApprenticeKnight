@@ -53,11 +53,14 @@ public class Monster : MonoBehaviour
 
     public void Set()
     {
+        Debug.Log(objectPool.CountInactive);
+
         Monster monster = objectPool.Get();
 
         // 위치 랜덤으로 정함
         SetRandomPosition(monster);
-
+        // 방향 초기화
+        monster.transform.eulerAngles = Vector3.zero;
         // 스탯 초기화
         statHandler.InitializeStats();
         isDie = false;

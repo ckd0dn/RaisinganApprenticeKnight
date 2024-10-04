@@ -15,13 +15,13 @@ public class PlayerMoveState : PlayerBaseState
     public override void Enter()
     {
 
-        FindClosestMonster();
-
         StartAnimation(stateMachine.Player.animationData.MoveParameterHash);
     }
 
     public override void Update()
     {
+        FindClosestMonster();
+
         if (stateMachine.Player.closestMonster != null)
         {
             MoveToMonster();
@@ -58,6 +58,8 @@ public class PlayerMoveState : PlayerBaseState
                 .Where(monster => !monster.isDie)
                 .OrderBy(monster => Vector3.Distance(stateMachine.Player.transform.position, monster.transform.position))
                 .FirstOrDefault();
+
+
         }
 
     }
