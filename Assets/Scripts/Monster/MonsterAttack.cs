@@ -15,6 +15,6 @@ public class MonsterAttack : MonoBehaviour
 
     public void BaseAttack()
     {
-        player.healthSystem.ChangeHealth(montser.statHandler.currentAtk);
+        player.healthSystem.ChangeHealth(-montser.statHandler.currentAtk);
     }
 }

@@ -13,6 +13,6 @@ public class PlayerAttack : MonoBehaviour
 
     public void BaseAttack()
     {
-        player.closestMonster.healthSystem.ChangeHealth(player.statHandler.currentAtk);
+        player.closestMonster.healthSystem.ChangeHealth(-player.statHandler.currentAtk);
     }
 }

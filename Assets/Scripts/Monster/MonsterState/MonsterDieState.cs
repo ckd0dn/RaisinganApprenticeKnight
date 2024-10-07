@@ -33,7 +33,7 @@ public class MonsterDieState : MonsterBaseState
 
     public override void Exit()
     {
-        StopAnimation(stateMachine.Monster.animationData.DieParameterHash);
+
     }
 
 

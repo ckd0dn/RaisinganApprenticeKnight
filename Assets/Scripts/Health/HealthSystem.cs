@@ -10,8 +10,6 @@ public class HealthSystem : MonoBehaviour
     public event Action OnDeath;
     public event Action OnHealthChanged;
 
-    public float MaxHealth;
-
     public bool isDie = false;
 
     private void Awake()
@@ -25,7 +23,7 @@ public class HealthSystem : MonoBehaviour
 
         statsHandler.currentHp += change;
 
-        statsHandler.currentHp = Mathf.Clamp(statsHandler.currentHp, 0, MaxHealth);
+        statsHandler.currentHp = Mathf.Clamp(statsHandler.currentHp, 0, statsHandler.maxHp);
 
         OnHealthChanged?.Invoke();
         

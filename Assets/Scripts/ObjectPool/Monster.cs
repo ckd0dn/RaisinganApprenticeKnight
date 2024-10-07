@@ -17,8 +17,8 @@ public class Monster : MonoBehaviour
     public StatHandler statHandler;
     public Animator animator;
     public MonsterAnimationData animationData;
-
     private MonsterStateMachine stateMachine;
+    private MonsterHpBar monsterHpBar;
 
     public bool isDie = false;
 
@@ -27,7 +27,8 @@ public class Monster : MonoBehaviour
         player = FindFirstObjectByType<Player>();
         healthSystem = GetComponent<HealthSystem>();
         statHandler = GetComponent<StatHandler>();
-        animator = GetComponent<Animator>(); 
+        animator = GetComponent<Animator>();
+        monsterHpBar = GetComponentInChildren<MonsterHpBar>();
         animationData = new MonsterAnimationData();
         animationData.Init();
 
@@ -45,24 +46,16 @@ public class Monster : MonoBehaviour
         stateMachine.Update();
     }
 
-    private void OnDisable()
-    {
-        Invoke("Set", 3f);
-    }
-
 
     public void Set()
     {
-        Debug.Log(objectPool.CountInactive);
-
-        Monster monster = objectPool.Get();
-
         // 위치 랜덤으로 정함
-        SetRandomPosition(monster);
+        SetRandomPosition(this);
         // 방향 초기화
-        monster.transform.eulerAngles = Vector3.zero;
+        transform.eulerAngles = Vector3.zero;
         // 스탯 초기화
         statHandler.InitializeStats();
+        monsterHpBar.UpdateHpBar();
         isDie = false;
 
         // 초기화되면 이동
@@ -86,9 +79,5 @@ public class Monster : MonoBehaviour
         monster.transform.position = new Vector3(randomOffsetX, randomOffsetY, transform.position.z);
     }
 
-    //public void MoveToPlayer()
-    //{
-    //    transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-    //}
 
 }

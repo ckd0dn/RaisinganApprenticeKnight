@@ -25,6 +25,11 @@ public class PlayerBaseState : IState
 
     }
 
+    protected void StartBoolAnimation(int animatorHash)
+    {
+        stateMachine.Player.animator.SetBool(animatorHash, true);
+    }
+
     protected void StartAnimation(int animatorHash)
     {
         stateMachine.Player.animator.SetBool(animatorHash, true);

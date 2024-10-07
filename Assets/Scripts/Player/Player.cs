@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public Rigidbody2D rb;
     private PlayerStateMachine stateMachine;
 
     public Animator animator;
@@ -15,10 +16,15 @@ public class Player : MonoBehaviour
 
     public StatHandler statHandler; 
     public HealthSystem healthSystem;
+    private PlayerHpBar hpBar;
+
+    [SerializeField] private float resetCoolTime = 5f; 
 
     private void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         stateMachine = new PlayerStateMachine(this);
+        hpBar = GetComponentInChildren<PlayerHpBar>();
 
         animator = GetComponentInChildren<Animator>();
         statHandler = GetComponent<StatHandler>();
@@ -32,8 +38,9 @@ public class Player : MonoBehaviour
     private void Start()
     {
         monsterObjectPool = FindFirstObjectByType<MonsterObjectPool>();
+        healthSystem.OnDeath += Die;
 
-        StartCoroutine(WaitMonsterObjectPool());
+        stateMachine.ChangeState(stateMachine.MoveState);
 
     }
 
@@ -42,19 +49,26 @@ public class Player : MonoBehaviour
         stateMachine.Update();
     }
 
-    IEnumerator WaitMonsterObjectPool()
+    public void Die()
     {
-        bool isMonster = false;
+        stateMachine.ChangeState(stateMachine.DieState);
+    }
 
-        while (!isMonster)
-        {
-            if (stateMachine.Player.monsterObjectPool.monsters.Count != 0)
-            {
-                stateMachine.ChangeState(stateMachine.MoveState);
-                isMonster = true;
-            }
-            yield return null;
-        }
+    public void Reset()
+    {
+        StartCoroutine(ResetRoutine());
+    }
+
+    private IEnumerator ResetRoutine()
+    {
+        yield return new WaitForSeconds(resetCoolTime);
+
+        // 스탯 초기화
+        statHandler.InitializeStats();
+        hpBar.UpdateHpBar();
+        // 이동 상태로 변경
+        stateMachine.ChangeState(stateMachine.MoveState);
+
     }
 
 }

@@ -45,6 +45,21 @@ public class PlayerMoveState : PlayerBaseState
         {
             stateMachine.ChangeState(stateMachine.AttackState);
         }
+
+        // 몬스터와의 방향을 계산
+        //Vector3 direction = (closestMonsterPosition - playerPosition).normalized;
+
+        // 플레이어가 몬스터 쪽으로 바라보도록 회전
+
+        // RigidBody를 사용하여 몬스터 방향으로 이동
+        //stateMachine.Player.rb.velocity = direction * speed;
+
+        //if (Vector2.Distance(playerPosition, closestMonsterPosition) <= distance)
+        //{
+        //    stateMachine.ChangeState(stateMachine.AttackState);
+        //}
+
+
     }
 
     void FindClosestMonster()

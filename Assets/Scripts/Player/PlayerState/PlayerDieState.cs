@@ -11,7 +11,9 @@ public class PlayerDieState : PlayerBaseState
 
     public override void Enter()
     {
-        StartAnimation(stateMachine.Player.animationData.MoveParameterHash);
+        StartBoolAnimation(stateMachine.Player.animationData.DieParameterHash);
+
+        stateMachine.Player.Reset();
     }
 
     public override void Update()
@@ -21,7 +23,7 @@ public class PlayerDieState : PlayerBaseState
 
     public override void Exit()
     {
-        StopAnimation(stateMachine.Player.animationData.MoveParameterHash);
+
     }
 
 

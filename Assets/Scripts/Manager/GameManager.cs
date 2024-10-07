@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -12,12 +13,27 @@ public class GameManager : Singleton<GameManager>
         SpawnMonsters(); 
     }
 
+    private void Update()
+    {
+        ReSpawnMonsters();
+    }
+
     void SpawnMonsters()
     {
         for (int i = 0; i < monsterCount; i++ )
         {
             Monster monster = monsterObjectPool.objectPool.Get();
-            monster.SetRandomPosition(monster);
+            // monster.SetRandomPosition(monster);
+            monster.Set();
+        }
+    }
+
+    public void ReSpawnMonsters()
+    {
+
+        if(monsterObjectPool.objectPool.CountInactive == monsterCount)
+        {
+            SpawnMonsters();
         }
     }
 
