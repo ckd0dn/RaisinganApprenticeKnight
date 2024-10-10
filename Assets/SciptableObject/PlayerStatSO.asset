@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb18c2d73218644ab675c26f261cc84, type: 3}
   m_Name: PlayerStatSO
   m_EditorClassIdentifier: 
-  hp: 100
+  hp: 1000
   atk: 5
   criticalChancePercent: 0
   criticalDamagePercent: 1

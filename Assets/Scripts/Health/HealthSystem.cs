@@ -9,6 +9,7 @@ public class HealthSystem : MonoBehaviour
     public event Action OnHeal;
     public event Action OnDeath;
     public event Action OnHealthChanged;
+    public event Action<Transform, float> OnHealthChangedWithParams;
 
     public bool isDie = false;
 
@@ -16,6 +17,7 @@ public class HealthSystem : MonoBehaviour
     {
         statsHandler = GetComponent<StatHandler>();  
     }
+
 
     public void ChangeHealth(float change)
     {
@@ -27,6 +29,9 @@ public class HealthSystem : MonoBehaviour
 
         OnHealthChanged?.Invoke();
         
+        showDamage(change);
+
+
         if (statsHandler.currentHp <= 0f)
         {
             OnDeath?.Invoke();
@@ -40,5 +45,11 @@ public class HealthSystem : MonoBehaviour
         {
             OnDamage?.Invoke();
         }
+    }
+
+    public void showDamage(float damage)
+    {
+        DamageTxt damageTxt = GameManager.Instance.damageTxtObjectPool.objectPool.Get();
+        damageTxt.Show(transform, damage);
     }
 }

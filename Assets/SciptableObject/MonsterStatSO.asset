@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MonsterStatSO
   m_EditorClassIdentifier: 
   hp: 5
-  atk: 5
+  atk: 1
   criticalChancePercent: 0
   criticalDamagePercent: 1
   totalDamagePercent: 1

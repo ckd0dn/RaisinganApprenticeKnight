@@ -65,6 +65,7 @@ public class Monster : MonoBehaviour
     public void Die()
     {
         stateMachine.ChangeState(stateMachine.DieState);
+        StageManager.Instance.currentMonsterCount--;
     }
 
     public void SetRandomPosition(Monster monster)
