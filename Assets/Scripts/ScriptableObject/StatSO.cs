@@ -10,5 +10,7 @@ public class StatSO : ScriptableObject
     [Range(0, 1)] public float criticalChancePercent;
     public float criticalDamagePercent;
     public float totalDamagePercent;
+    [Header("Monser")]
+    public int dropGold;
 
 }

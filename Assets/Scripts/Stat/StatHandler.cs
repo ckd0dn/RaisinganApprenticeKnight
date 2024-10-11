@@ -11,6 +11,7 @@ public class StatHandler : MonoBehaviour
     public float currentCriticalChance;
     public float currentCriticalDamage;
     public float currentTotalDamage;
+    public int dropGold;
 
     void Awake()
     {
@@ -25,5 +26,6 @@ public class StatHandler : MonoBehaviour
         currentCriticalChance = baseStats.criticalChancePercent;
         currentCriticalDamage = baseStats.criticalDamagePercent;
         currentTotalDamage = baseStats.totalDamagePercent;
+        dropGold = baseStats.dropGold;
     }
 }

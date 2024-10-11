@@ -17,3 +17,4 @@ MonoBehaviour:
   criticalChancePercent: 0
   criticalDamagePercent: 1
   totalDamagePercent: 1
+  dropGold: 50

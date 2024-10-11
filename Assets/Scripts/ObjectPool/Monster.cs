@@ -66,6 +66,7 @@ public class Monster : MonoBehaviour
     {
         stateMachine.ChangeState(stateMachine.DieState);
         StageManager.Instance.currentMonsterCount--;
+        DropGold();
     }
 
     public void SetRandomPosition(Monster monster)
@@ -80,5 +81,12 @@ public class Monster : MonoBehaviour
         monster.transform.position = new Vector3(randomOffsetX, randomOffsetY, transform.position.z);
     }
 
+    private void DropGold()
+    {
+        // TODO 골드 이미지가 뿌려지고 먹어지는 로직
+
+        // 실제로 골드 재화를 얻음
+        GameManager.Instance.currency.AddGold(statHandler.dropGold);
+    }
 
 }
