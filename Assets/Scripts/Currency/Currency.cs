@@ -20,16 +20,17 @@ public class Currency : MonoBehaviour
         panel.UpdateCrurrencyUI();
     }
 
-    public void UseGold(int amount)
+    public bool UseGold(int amount)
     {
         if(gold < amount)
         {
             Debug.Log("골드가 부족합니다.");
-            return;
+            return false;
         }
 
         gold -= amount;
         panel.UpdateCrurrencyUI();
+        return true;
     }
 
     public void AddCrystal(int amount)
@@ -38,16 +39,17 @@ public class Currency : MonoBehaviour
         panel.UpdateCrurrencyUI();
     }
 
-    public void UseCrystal(int amount)
+    public bool UseCrystal(int amount)
     {
         if (crystal < amount)
         {
             Debug.Log("크리스탈이 부족합니다.");
-            return;
+            return false;
         }
 
         crystal -= amount;
         panel.UpdateCrurrencyUI();
+        return true;
     }
 
     public int GetGold()
