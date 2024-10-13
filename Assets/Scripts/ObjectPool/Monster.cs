@@ -57,6 +57,7 @@ public class Monster : MonoBehaviour
         statHandler.InitializeStats();
         monsterHpBar.UpdateHpBar();
         isDie = false;
+        monsterHpBar.gameObject.SetActive(true);
 
         // 초기화되면 이동
         stateMachine.ChangeState(stateMachine.MoveState); 
@@ -67,6 +68,7 @@ public class Monster : MonoBehaviour
         stateMachine.ChangeState(stateMachine.DieState);
         StageManager.Instance.currentMonsterCount--;
         DropGold();
+        monsterHpBar.gameObject.SetActive(false);
     }
 
     public void SetRandomPosition(Monster monster)

@@ -201,8 +201,8 @@ public class UpgradeSystem : MonoBehaviour
     private void UpdateCriticalDamageUI()
     {
         criticalDamageLvText.text = $"Lv {criticalDamageLevel}";
-        criticalDamageValueText.text = $"{currentCriticalDamage * 100}%"; 
-        criticalChancePriceText.text = criticalDamageUpgradeCost.ToString();
+        criticalDamageValueText.text = $"{currentCriticalDamage * 100}%";
+        criticalDamagePriceText.text = criticalDamageUpgradeCost.ToString();
     }
 
     private void UpdateTotalDamageUI()

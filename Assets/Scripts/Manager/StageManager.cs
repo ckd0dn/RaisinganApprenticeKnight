@@ -32,7 +32,6 @@ public class StageManager : Singleton<StageManager>
     {
         while (true)
         {
-            Debug.Log(currentMonsterCount);
 
             if(currentMonsterCount == 0)
             {

@@ -15,5 +15,6 @@ MonoBehaviour:
   hp: 1000
   atk: 5
   criticalChancePercent: 0
-  criticalDamagePercent: 1
-  totalDamagePercent: 1
+  criticalDamagePercent: 0
+  totalDamagePercent: 0
+  dropGold: 0

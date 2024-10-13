@@ -19,7 +19,7 @@ public class HealthSystem : MonoBehaviour
     }
 
 
-    public void ChangeHealth(float change)
+    public void ChangeHealth(float change, bool isCritical = false)
     {
         if (statsHandler.currentHp <= 0) return;
 
@@ -29,7 +29,7 @@ public class HealthSystem : MonoBehaviour
 
         OnHealthChanged?.Invoke();
         
-        showDamage(change);
+        showDamage(change, isCritical);
 
 
         if (statsHandler.currentHp <= 0f)
@@ -47,9 +47,9 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
-    public void showDamage(float damage)
+    public void showDamage(float damage, bool isCritical)
     {
         DamageTxt damageTxt = GameManager.Instance.damageTxtObjectPool.objectPool.Get();
-        damageTxt.Show(transform, damage);
+        damageTxt.Show(transform, damage, isCritical);
     }
 }
