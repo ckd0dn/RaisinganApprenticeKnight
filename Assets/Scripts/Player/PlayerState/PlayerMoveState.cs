@@ -65,10 +65,10 @@ public class PlayerMoveState : PlayerBaseState
     void FindClosestMonster()
     {
 
-        if (stateMachine.Player.monsterObjectPool.monsters.Count != 0)
+        if (GameManager.Instance.monsterObjPool.monsterList.Count != 0)
         {
             // 모든 몬스터와의 거리를 계산하여 가장 가까운 몬스터 찾기
-            stateMachine.Player.closestMonster = stateMachine.Player.monsterObjectPool.monsters
+            stateMachine.Player.closestMonster = GameManager.Instance.monsterObjPool.monsterList
                 .Where(monster => monster.gameObject.activeSelf)
                 .Where(monster => !monster.isDie)
                 .OrderBy(monster => Vector3.Distance(stateMachine.Player.transform.position, monster.transform.position))

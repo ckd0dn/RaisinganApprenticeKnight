@@ -1694,7 +1694,7 @@ Transform:
   m_GameObject: {fileID: 332421794}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: -50, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2524,7 +2524,7 @@ Transform:
   m_GameObject: {fileID: 454178702}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -50, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12562,7 +12562,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1162243245}
-  - component: {fileID: 1162243246}
+  - component: {fileID: 1162243247}
   m_Layer: 0
   m_Name: MonsterObjectPool
   m_TagString: Untagged
@@ -12585,7 +12585,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1724840936}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1162243246
+--- !u!114 &1162243247
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12594,14 +12594,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 1162243244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a88b98b0ae71cf44d9e9407f38724d71, type: 3}
+  m_Script: {fileID: 11500000, guid: 8583dad96137bb940bd232324c71fb31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monsterPrefab: {fileID: 4961394320661282187, guid: 5d098e95c8ec181449bb68d0790aa99c, type: 3}
-  collectionCheck: 1
-  defaultCapacity: 20
-  maxSize: 100
-  monsters: []
+  Pools:
+  - tag: 1
+    prefab: {fileID: -1165959346657700786, guid: 66ce0cc6e6b5ecb4f929de6ac5b87846, type: 3}
+    size: 50
+  - tag: 2
+    prefab: {fileID: -1122201869327365368, guid: ffcc83d90a7b1e74394f130c43b2d49a, type: 3}
+    size: 50
+  - tag: 3
+    prefab: {fileID: 7202390452313159116, guid: 6e6de25903cc6f64089e12db06e46fd2, type: 3}
+    size: 50
+  - tag: 4
+    prefab: {fileID: 4774001458925498225, guid: 0c3d0b4c67e59d74ea78af476a99e3bc, type: 3}
+    size: 50
+  - tag: 5
+    prefab: {fileID: -6972804964605960272, guid: 4180d1dcbf43ff34d9efbb4f35c6bbc2, type: 3}
+    size: 50
+  - tag: 6
+    prefab: {fileID: 2493446511352949795, guid: c2dfaa41f8432184eb3cba006f5567b8, type: 3}
+    size: 50
+  - tag: 7
+    prefab: {fileID: 4238604383508722454, guid: 760971b163f22c84fb3034902f22e0b8, type: 3}
+    size: 50
+  - tag: 8
+    prefab: {fileID: 6017295652249055545, guid: 6011ce50533b75a42b76425d88f954cb, type: 3}
+    size: 50
+  - tag: 9
+    prefab: {fileID: 3956487484736510567, guid: 3ff623accf11d2a4988d62e9e0b335df, type: 3}
+    size: 50
+  - tag: 10
+    prefab: {fileID: -5273472791152872135, guid: 4003c555ee9e85448bef0b205a5b922e, type: 3}
+    size: 50
+  monsterList: []
 --- !u!1 &1219359991
 GameObject:
   m_ObjectHideFlags: 0
@@ -12668,7 +12695,7 @@ Transform:
   m_GameObject: {fileID: 1219359991}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: -50, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14799,6 +14826,7 @@ MonoBehaviour:
   damageTxtObjectPool: {fileID: 0}
   monsterCount: 10
   currency: {fileID: 0}
+  monsterObjPool: {fileID: 0}
 --- !u!4 &2050399781
 Transform:
   m_ObjectHideFlags: 0
@@ -15979,7 +16007,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8509111274063667505, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 8509111274063667505, guid: f8c6c640fb647e94eaef0f76019f145e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18257,5 +18285,5 @@ SceneRoots:
   - {fileID: 1079842909}
   - {fileID: 332421797}
   - {fileID: 1219359993}
-  - {fileID: 156488121}
   - {fileID: 1795772517}
+  - {fileID: 156488121}

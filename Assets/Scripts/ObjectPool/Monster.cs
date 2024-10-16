@@ -5,9 +5,6 @@ using UnityEngine.Pool;
 
 public class Monster : MonoBehaviour
 {
-    public IObjectPool<Monster> objectPool;
-
-    public IObjectPool<Monster> ObjectPool { set => objectPool = value; }
 
     public Player player;
 
@@ -52,7 +49,7 @@ public class Monster : MonoBehaviour
         // 위치 랜덤으로 정함
         SetRandomPosition(this);
         // 방향 초기화
-        transform.eulerAngles = Vector3.zero;
+        transform.rotation = Quaternion.identity;
         // 스탯 초기화
         statHandler.InitializeStats();
         monsterHpBar.UpdateHpBar();
@@ -75,8 +72,8 @@ public class Monster : MonoBehaviour
     {
         int minX = -9;
         int maxX = 8;
-        int minY = -9;
-        int maxY = -4;
+        int minY = -59;
+        int maxY = -44;
         int randomOffsetX = Random.Range(minX, maxX);
         int randomOffsetY = Random.Range(minY, maxY);
 

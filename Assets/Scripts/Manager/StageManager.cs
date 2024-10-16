@@ -9,17 +9,18 @@ public class StageManager : Singleton<StageManager>
     private int endWave = 0;                                // 마지막 웨이브
     [SerializeField] private int maxWave = 5;               // 최대 웨이브
     [Header("몬스터")]
-    private MonsterObjectPool monsterObjectPool;
-    public int currentMonsterCount = 0;                             // 현재 몬스터 수
+    private MonsterObjPool monsterObjPool;
+    public int currentMonsterCount = 0;                          // 현재 몬스터 수
     [SerializeField] private int monsterWaveCount = 20;          // 웨이브 몬스터 수
-    [SerializeField] private int monstersPerWaveIncrease = 5;   // 웨이브별 몬스터 증가량
+    [SerializeField] private int monstersPerWaveIncrease = 5;    // 웨이브별 몬스터 증가량
+    int monsterNum = 1;                                          // 몬스터 번호
     [Header("UI")]
     StagePanel stagePanel;
 
     protected override void Awake()
     {
         base.Awake();
-        monsterObjectPool = FindFirstObjectByType<MonsterObjectPool>();
+        monsterObjPool = FindFirstObjectByType<MonsterObjPool>();
         stagePanel = FindFirstObjectByType<StagePanel>();
     }
 
@@ -43,7 +44,7 @@ public class StageManager : Singleton<StageManager>
 
                 yield return new WaitForSeconds(2f);
      
-                SpawnMonsters();
+                SpawnMonsters(monsterNum.ToString());
              
             }
 
@@ -59,6 +60,7 @@ public class StageManager : Singleton<StageManager>
             startWave++;
             endWave = 1;
             currentMonsterCount = monsterWaveCount + endWave * monstersPerWaveIncrease;
+            monsterNum++;
         }
         else
         {
@@ -68,11 +70,11 @@ public class StageManager : Singleton<StageManager>
 
     }
 
-    void SpawnMonsters()
+    void SpawnMonsters(string monsterNum)
     {
         for (int i = 0; i < currentMonsterCount; i++)
         {
-            Monster monster = monsterObjectPool.objectPool.Get();
+            Monster monster = monsterObjPool.SpawnFromPool(monsterNum);
             monster.Set();
         }
     }

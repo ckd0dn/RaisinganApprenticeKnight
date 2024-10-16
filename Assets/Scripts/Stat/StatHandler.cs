@@ -15,6 +15,11 @@ public class StatHandler : MonoBehaviour
 
     void Awake()
     {
+       // InitializeStats();
+    }
+
+    private void Start()
+    {
         InitializeStats();
     }
 

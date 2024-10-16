@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
 
     public PlayerAnimationData animationData;
 
-    public MonsterObjectPool monsterObjectPool;
     public Monster closestMonster;  // 가장 가까운 몬스터 저장
 
     public StatHandler statHandler; 
@@ -37,7 +36,6 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        monsterObjectPool = FindFirstObjectByType<MonsterObjectPool>();
         healthSystem.OnDeath += Die;
 
         stateMachine.ChangeState(stateMachine.MoveState);

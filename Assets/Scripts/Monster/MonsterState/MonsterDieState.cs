@@ -26,7 +26,7 @@ public class MonsterDieState : MonsterBaseState
 
         if (timer > delay)
         {
-            stateMachine.Monster.objectPool.Release(stateMachine.Monster);
+            stateMachine.Monster.gameObject.SetActive(false);
             timer = 0;
         }
     }
