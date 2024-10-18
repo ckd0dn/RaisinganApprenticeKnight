@@ -378,9 +378,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxWave: 5
+  isBossWave: 0
   currentMonsterCount: 0
-  monsterWaveCount: 5
-  monstersPerWaveIncrease: 5
+  monsterWaveCount: 1
+  monstersPerWaveIncrease: 0
 --- !u!1 &55256804
 GameObject:
   m_ObjectHideFlags: 0
@@ -2752,6 +2753,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 508105026}
+  - component: {fileID: 508105027}
   m_Layer: 5
   m_Name: BossUI
   m_TagString: Untagged
@@ -2780,6 +2782,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 300}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &508105027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508105025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11df18c9b0518d640888762c41416640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossHpUI: {fileID: 2056024204}
+  bossHpText: {fileID: 1517980952}
+  bossText: {fileID: 1754098908}
+  bossHpFill: {fileID: 2085874535}
 --- !u!1 &524276041
 GameObject:
   m_ObjectHideFlags: 0
@@ -12876,6 +12894,36 @@ MonoBehaviour:
   - tag: 10
     prefab: {fileID: -5273472791152872135, guid: 4003c555ee9e85448bef0b205a5b922e, type: 3}
     size: 50
+  - tag: 101
+    prefab: {fileID: 5131607378954493533, guid: 6146fd5f9d85fa9419af3022b406cfcc, type: 3}
+    size: 1
+  - tag: 102
+    prefab: {fileID: 3312982690718026022, guid: 77256dca24886c74992faa3e552f8933, type: 3}
+    size: 1
+  - tag: 103
+    prefab: {fileID: 484588471056163465, guid: f44af4273785a32459ad9304500db0dc, type: 3}
+    size: 1
+  - tag: 104
+    prefab: {fileID: -7423361401432449669, guid: 9aa90a7629e654f47b468476ba6d50c8, type: 3}
+    size: 1
+  - tag: 105
+    prefab: {fileID: -501262516816795533, guid: f16eb7d3425bb6c42bf24a69f05bd550, type: 3}
+    size: 1
+  - tag: 106
+    prefab: {fileID: 4155739672264934198, guid: 9c89d06a818f1184aa3863e51675caa3, type: 3}
+    size: 1
+  - tag: 107
+    prefab: {fileID: -2180216292959270090, guid: 13861416b7134bc4791397c106e5cee7, type: 3}
+    size: 1
+  - tag: 108
+    prefab: {fileID: 5834479625941689330, guid: 8f47b3d4c33fce14997b624b2d77c91e, type: 3}
+    size: 1
+  - tag: 109
+    prefab: {fileID: -8843578589306400574, guid: 90f0b789c45238b46aadccdfa0344282, type: 3}
+    size: 1
+  - tag: 110
+    prefab: {fileID: -2499043139130921819, guid: b8c03b13935bd6e46bdab7773917d5e6, type: 3}
+    size: 1
   monsterList: []
 --- !u!1 &1219359991
 GameObject:
@@ -13848,8 +13896,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 100
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2138d610c44f2a54bba9bb4d4c7b96a9, type: 2}
+  m_sharedMaterial: {fileID: -594180979474906150, guid: 2138d610c44f2a54bba9bb4d4c7b96a9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13873,8 +13921,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

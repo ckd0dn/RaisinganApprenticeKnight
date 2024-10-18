@@ -65,13 +65,13 @@ PrefabInstance:
       addedObject: {fileID: -7780979199392043801}
     - targetCorrespondingSourceObject: {fileID: 4894101202721108359, guid: 5a7df47b686253b409e4efbe6a3745bf, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -2424931731031092669}
-    - targetCorrespondingSourceObject: {fileID: 4894101202721108359, guid: 5a7df47b686253b409e4efbe6a3745bf, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 6158173615050449102}
     - targetCorrespondingSourceObject: {fileID: 4894101202721108359, guid: 5a7df47b686253b409e4efbe6a3745bf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1864188742539927687}
+    - targetCorrespondingSourceObject: {fileID: 4894101202721108359, guid: 5a7df47b686253b409e4efbe6a3745bf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -2180216292959270090}
   m_SourcePrefab: {fileID: 100100000, guid: 5a7df47b686253b409e4efbe6a3745bf, type: 3}
 --- !u!1 &5669858022358430691 stripped
 GameObject:
@@ -90,24 +90,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14a47744e6561eb4bb9110929fbf6deb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-2424931731031092669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5669858022358430691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9894b5cdde98b7428ed292f01f0b08e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  speed: 0
-  healthSystem: {fileID: 0}
-  statHandler: {fileID: 0}
-  animator: {fileID: 0}
-  isDie: 0
 --- !u!114 &6158173615050449102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,3 +123,22 @@ MonoBehaviour:
   currentCriticalDamage: 0
   currentTotalDamage: 0
   dropGold: 0
+--- !u!114 &-2180216292959270090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5669858022358430691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be35594018f297418cb6fe212abe70d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  speed: 0
+  healthSystem: {fileID: 0}
+  statHandler: {fileID: 0}
+  animator: {fileID: 0}
+  isDie: 0
+  speed: 0

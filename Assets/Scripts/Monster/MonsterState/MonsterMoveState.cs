@@ -5,7 +5,7 @@ using System.Collections;
 public class MonsterMoveState : MonsterBaseState
 {
     public float speed = .5f;      // 이동 속도
-    private float distance = 1f;
+    public float distance = 1f;
 
     public MonsterMoveState(MonsterStateMachine stateMachine) : base(stateMachine)
     {

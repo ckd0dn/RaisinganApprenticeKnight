@@ -7,19 +7,21 @@ public class MonsterHpBar : MonoBehaviour
 {
     private Slider slider;
     private Monster monster;
-    private Collider monsterCollider;
-    [SerializeField] float offsetY = -0.3f;
+    private Collider2D monsterCollider;
+    [SerializeField] float offsetY = .8f;
+    [SerializeField] float offsetx = 0.1f;
 
     private void Awake()
     {
         slider = GetComponentInChildren<Slider>();
         monster = GetComponentInParent<Monster>();
-        monsterCollider = monster.GetComponent<Collider>();
+        monsterCollider = monster.GetComponent<Collider2D>();
     }
 
     private void Start()
     {
         monster.healthSystem.OnHealthChanged += UpdateHpBar;
+        SetPosition();
     }
 
     public void UpdateHpBar()
@@ -31,7 +33,7 @@ public class MonsterHpBar : MonoBehaviour
     {
         float monsterHeight = monsterCollider.bounds.size.y;
         float monsterWidth = monsterCollider.bounds.size.x;
-        Vector3 setPosition = monster.transform.position + new Vector3(monsterWidth / 2 , monsterHeight / 2 + offsetY, 0);
+        Vector3 setPosition = monster.transform.position + new Vector3(offsetx, - monsterHeight / 2 + offsetY, 0);
         transform.position = setPosition;
     }
 }

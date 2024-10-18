@@ -9,7 +9,7 @@ public class HealthSystem : MonoBehaviour
     public event Action OnHeal;
     public event Action OnDeath;
     public event Action OnHealthChanged;
-    public event Action<Transform, float> OnHealthChangedWithParams;
+    public event Action<int> OnHealthChangedWithParams;
 
     public bool isDie = false;
 
@@ -28,7 +28,8 @@ public class HealthSystem : MonoBehaviour
         statsHandler.currentHp = Mathf.Clamp(statsHandler.currentHp, 0, statsHandler.maxHp);
 
         OnHealthChanged?.Invoke();
-        
+        OnHealthChangedWithParams?.Invoke((int)statsHandler.currentHp);
+
         showDamage(change, isCritical);
 
 

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edb18c2d73218644ab675c26f261cc84, type: 3}
   m_Name: BossStatSO 4
   m_EditorClassIdentifier: 
-  hp: 10
-  atk: 1
+  hp: 10000
+  atk: 100
   criticalChancePercent: 0
   criticalDamagePercent: 1
   totalDamagePercent: 1
-  dropGold: 50
+  dropGold: 1000000
