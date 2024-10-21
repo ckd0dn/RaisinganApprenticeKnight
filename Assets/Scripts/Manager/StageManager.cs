@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class StageManager : Singleton<StageManager>
@@ -18,12 +19,14 @@ public class StageManager : Singleton<StageManager>
     int bossMonsterNum = 101;                                    // 보스몬스터 번호
     [Header("UI")]
     StagePanel stagePanel;
+    BossUI bossUI;
     
     protected override void Awake()
     {
         base.Awake();
         monsterObjPool = FindFirstObjectByType<MonsterObjPool>();
         stagePanel = FindFirstObjectByType<StagePanel>();
+        bossUI = FindFirstObjectByType<BossUI>();
     }
 
     private void Start()
@@ -101,6 +104,27 @@ public class StageManager : Singleton<StageManager>
             Monster monster = monsterObjPool.SpawnFromPool(monsterNum);
             monster.Set();
         }
+    }
+
+    public IEnumerator ResetWave()
+    {
+        BossMonster activeBossMonsters =  GameManager.Instance.monsterObjPool.monsterList.OfType<BossMonster>().FirstOrDefault(monster => monster.gameObject.activeSelf);
+
+        if (activeBossMonsters != null)
+        {
+            activeBossMonsters.gameObject.SetActive(false);
+            bossUI.DisableBossUI();
+            isBossWave = false;
+        }
+
+        endWave = 1;
+        currentMonsterCount = monsterWaveCount + endWave * monstersPerWaveIncrease;
+
+        stagePanel.UpdateStageText(startWave, endWave);
+
+        yield return new WaitForSeconds(2f);
+
+        SpawnMonsters(monsterNum.ToString());
     }
 
 }

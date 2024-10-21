@@ -9,6 +9,7 @@ public class BossUI : MonoBehaviour
     public TextMeshProUGUI bossHpText;
     public TextMeshProUGUI bossText;
     public Image bossHpFill;
+    public Image bossImg;
 
     private int bossMaxHp;
     private int bossHp;
@@ -44,12 +45,13 @@ public class BossUI : MonoBehaviour
         });
     }
 
-    public void SetBossData(int currentBossHp)
+    public void SetBossData(int currentBossHp, Sprite bossBodySprite)
     {
         bossMaxHp = currentBossHp;
         bossHp = currentBossHp;
         bossHpText.text = currentBossHp.ToString();
         bossHpFill.fillAmount = 1;
+        bossImg.sprite = bossBodySprite;
     }
 
     public void UpdateBossHp(int currentBossHp)

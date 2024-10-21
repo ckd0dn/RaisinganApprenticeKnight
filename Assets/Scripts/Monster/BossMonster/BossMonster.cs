@@ -6,14 +6,17 @@ public class BossMonster : Monster
 {
     private MonsterStateMachine stateMachine;
     private BossUI bossUI;
+    public Sprite bossSprite; 
 
     protected override void Awake()
     {
         base.Awake();
 
         bossUI =  FindFirstObjectByType<BossUI>();
+        GetBodySprite();
+
         stateMachine = new MonsterStateMachine(this);
-        stateMachine.MoveState.distance = 5;
+        stateMachine.MoveState.distance = 3;
     }
 
     private void Start()
@@ -37,7 +40,7 @@ public class BossMonster : Monster
         // 스탯 초기화
         statHandler.InitializeStats();
         // 보스 UI 활성화
-        bossUI.SetBossData((int)statHandler.currentHp);
+        bossUI.SetBossData((int)statHandler.currentHp, bossSprite);
         bossUI.AppearBossUI();
         // 초기화되면 이동
         stateMachine.ChangeState(stateMachine.MoveState);
@@ -65,5 +68,19 @@ public class BossMonster : Monster
         int x = 0;
         int y = -50;
         transform.position = new Vector3(x, y, transform.position.z);
+    }
+
+    void GetBodySprite()
+    {
+        Transform bodyTransform = transform.Find("Body");
+        if (bodyTransform != null)
+        {
+            SpriteRenderer spriteRenderer = bodyTransform.GetComponent<SpriteRenderer>();
+
+            if (spriteRenderer != null)
+            {
+                bossSprite = spriteRenderer.sprite;
+            }
+        }
     }
 }
