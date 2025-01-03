@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
     {
         stateMachine.ChangeState(stateMachine.DieState);
 
-        StartCoroutine(StageManager.Instance.ResetWave());
+        StartCoroutine(Managers.Stage.ResetWave());
     }
 
     public void Reset()

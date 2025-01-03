@@ -10,6 +10,8 @@ public class StagePanel : MonoBehaviour
 
     private void Awake()
     {
+        Managers.Stage.StagePanel = this;
+
         stageText = GetComponentInChildren<TextMeshProUGUI>();
     }
 

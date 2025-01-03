@@ -63,7 +63,7 @@ public class Monster : MonoBehaviour
     public virtual void Die()
     {
         stateMachine.ChangeState(stateMachine.DieState);
-        StageManager.Instance.currentMonsterCount--;
+        Managers.Stage.CurrentMonsterCount--;
         DropGold();
         monsterHpBar.gameObject.SetActive(false);
     }
@@ -85,7 +85,7 @@ public class Monster : MonoBehaviour
         // TODO 골드 이미지가 뿌려지고 먹어지는 로직
 
         // 실제로 골드 재화를 얻음
-        GameManager.Instance.currency.AddGold(statHandler.dropGold);
+        Managers.Game.currency.AddGold(statHandler.dropGold);
     }
 
 }

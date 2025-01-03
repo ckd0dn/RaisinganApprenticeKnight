@@ -111,7 +111,7 @@ public class UpgradeSystem : MonoBehaviour
     public void UpgradeHp()
     {
         // 구매 
-        bool canBuy = GameManager.Instance.currency.UseGold(hpUpgradeCost);
+        bool canBuy = Managers.Game.currency.UseGold(hpUpgradeCost);
         if (!canBuy) return;
         // 체력 증가
         currentHp = hpIncreaseAmount * hpLevel; // 현재 체력 + 증가량
@@ -126,7 +126,7 @@ public class UpgradeSystem : MonoBehaviour
     public void UpgradeAtk()
     {
         // 구매 
-        bool canBuy = GameManager.Instance.currency.UseGold(atkUpgradeCost);
+        bool canBuy = Managers.Game.currency.UseGold(atkUpgradeCost);
         if (!canBuy) return;
         // 공격력 증가
         currentAtk = atkIncreaseAmount * atkLevel; 
@@ -140,7 +140,7 @@ public class UpgradeSystem : MonoBehaviour
     public void UpgradeCriticalChance()
     {
         // 구매 
-        bool canBuy = GameManager.Instance.currency.UseGold(criticalChanceUpgradeCost);
+        bool canBuy = Managers.Game.currency.UseGold(criticalChanceUpgradeCost);
         if (!canBuy) return;
         // 크리티컬 확률 증가
         currentCriticalChance = criticalChanceIncreaseAmount * criticalChanceLevel;
@@ -154,7 +154,7 @@ public class UpgradeSystem : MonoBehaviour
     public void UpgradeCriticalDamage()
     {
         // 구매 
-        bool canBuy = GameManager.Instance.currency.UseGold(criticalDamageUpgradeCost);
+        bool canBuy = Managers.Game.currency.UseGold(criticalDamageUpgradeCost);
         if (!canBuy) return;
         // 크리티컬 데미지 증가
         currentCriticalDamage = criticalDamageIncreaseAmount * criticalDamageLevel;
@@ -168,7 +168,7 @@ public class UpgradeSystem : MonoBehaviour
     public void UpgradeTotalDamage()
     {
         // 구매 
-        bool canBuy = GameManager.Instance.currency.UseGold(totalDamageUpgradeCost);
+        bool canBuy = Managers.Game.currency.UseGold(totalDamageUpgradeCost);
         if (!canBuy) return;
         // 최종 데미지 증가
         currentTotalDamage = totalDamageIncreaseAmount * totalDamageLevel;

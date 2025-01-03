@@ -50,7 +50,7 @@ public class HealthSystem : MonoBehaviour
 
     public void showDamage(float damage, bool isCritical)
     {
-        DamageTxt damageTxt = GameManager.Instance.damageTxtObjectPool.objectPool.Get();
+        DamageTxt damageTxt = Managers.Game.DamageTxtObjectPool.objectPool.Get();
         damageTxt.Show(transform, damage, isCritical);
     }
 }

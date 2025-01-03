@@ -3,42 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class StageManager : Singleton<StageManager>
+public class StageManager
 {
-    [Header("웨이브")]
     private int startWave = 1;                              // 시작 웨이브
     private int endWave = 0;                                // 마지막 웨이브
-    [SerializeField] private int maxWave = 5;               // 최대 웨이브
+    private int maxWave = 5;               // 최대 웨이브
     public bool isBossWave = false;
-    [Header("몬스터")]
-    private MonsterObjPool monsterObjPool;
-    public int currentMonsterCount = 0;                          // 현재 몬스터 수
-    [SerializeField] private int monsterWaveCount = 20;          // 웨이브 몬스터 수
-    [SerializeField] private int monstersPerWaveIncrease = 5;    // 웨이브별 몬스터 증가량
+    public MonsterObjPool MonsterObjPool { get; set; }
+    public int CurrentMonsterCount { get; set; } = 0;                          // 현재 몬스터 수
+    private int monsterWaveCount = 20;          // 웨이브 몬스터 수
+    private int monstersPerWaveIncrease = 5;    // 웨이브별 몬스터 증가량
     int monsterNum = 1;                                          // 몬스터 번호
     int bossMonsterNum = 101;                                    // 보스몬스터 번호
-    [Header("UI")]
-    StagePanel stagePanel;
-    BossUI bossUI;
-    
-    protected override void Awake()
-    {
-        base.Awake();
-        monsterObjPool = FindFirstObjectByType<MonsterObjPool>();
-        stagePanel = FindFirstObjectByType<StagePanel>();
-        bossUI = FindFirstObjectByType<BossUI>();
-    }
+    public StagePanel StagePanel { get; set; }
+    public BossUI BossUI { get; set; }
 
-    private void Start()
-    {
-        StartCoroutine(StartWave());
-    }
-
-    IEnumerator StartWave()
+    public IEnumerator StartWave()
     {
         while (true)
         {
-            if(currentMonsterCount == 0)
+            if(CurrentMonsterCount == 0)
             {
 
                 CheckWaveEvent(); // 특정 웨이브 이벤트 처리
@@ -46,7 +30,7 @@ public class StageManager : Singleton<StageManager>
                 if (!isBossWave)
                 {
                     // 업데이트 UI
-                    stagePanel.UpdateStageText(startWave, endWave);
+                    StagePanel.UpdateStageText(startWave, endWave);
 
                     yield return new WaitForSeconds(2f);
 
@@ -77,7 +61,7 @@ public class StageManager : Singleton<StageManager>
                 bossMonsterNum++;
                 startWave++;
                 endWave = 1;
-                currentMonsterCount = monsterWaveCount + endWave * monstersPerWaveIncrease;
+                CurrentMonsterCount = monsterWaveCount + endWave * monstersPerWaveIncrease;
                 monsterNum++;
             }
    
@@ -85,42 +69,42 @@ public class StageManager : Singleton<StageManager>
         else
         {
             endWave++;
-            currentMonsterCount = monsterWaveCount + endWave * monstersPerWaveIncrease;
+            CurrentMonsterCount = monsterWaveCount + endWave * monstersPerWaveIncrease;
         }
 
     }
 
     void StartBossWave()
     {
-        currentMonsterCount = 1;
+        CurrentMonsterCount = 1;
         SpawnMonsters(bossMonsterNum.ToString());
     }
 
 
     void SpawnMonsters(string monsterNum)
     {
-        for (int i = 0; i < currentMonsterCount; i++)
+        for (int i = 0; i < CurrentMonsterCount; i++)
         {
-            Monster monster = monsterObjPool.SpawnFromPool(monsterNum);
+            Monster monster = MonsterObjPool.SpawnFromPool(monsterNum);
             monster.Set();
         }
     }
 
     public IEnumerator ResetWave()
     {
-        BossMonster activeBossMonsters =  GameManager.Instance.monsterObjPool.monsterList.OfType<BossMonster>().FirstOrDefault(monster => monster.gameObject.activeSelf);
+        BossMonster activeBossMonsters =  Managers.Game.MonsterObjPool.monsterList.OfType<BossMonster>().FirstOrDefault(monster => monster.gameObject.activeSelf);
 
         if (activeBossMonsters != null)
         {
             activeBossMonsters.gameObject.SetActive(false);
-            bossUI.DisableBossUI();
+            BossUI.DisableBossUI();
             isBossWave = false;
         }
 
         endWave = 1;
-        currentMonsterCount = monsterWaveCount + endWave * monstersPerWaveIncrease;
+        CurrentMonsterCount = monsterWaveCount + endWave * monstersPerWaveIncrease;
 
-        stagePanel.UpdateStageText(startWave, endWave);
+        StagePanel.UpdateStageText(startWave, endWave);
 
         yield return new WaitForSeconds(2f);
 

@@ -14,6 +14,11 @@ public class BossUI : MonoBehaviour
     private int bossMaxHp;
     private int bossHp;
 
+    private void Awake()
+    {
+        Managers.Stage.BossUI = this;      
+    }
+
     void Start()
     {
         bossHpUI.gameObject.SetActive(false);

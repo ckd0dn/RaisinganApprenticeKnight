@@ -23,6 +23,8 @@ public class DamageTxtObjectPool : MonoBehaviour
 
     private void Awake()
     {
+        Managers.Game.DamageTxtObjectPool = this;
+
         canvas = GetComponentInChildren<Canvas>();
 
         objectPool = new ObjectPool<DamageTxt>(Create,

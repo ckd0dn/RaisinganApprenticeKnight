@@ -8,6 +8,8 @@ public class MonsterObjPool : ObjPool<Monster>
 
     protected override void Awake()
     {
+        Init();
+
         PoolDictionary = new Dictionary<string, Queue<Monster>>();
         foreach (var pool in Pools)
         {
@@ -21,5 +23,11 @@ public class MonsterObjPool : ObjPool<Monster>
             }
             PoolDictionary.Add(pool.tag, objectPool);
         }
+    }
+
+    void Init()
+    {
+        Managers.Game.MonsterObjPool = this;
+        Managers.Stage.MonsterObjPool = this;
     }
 }

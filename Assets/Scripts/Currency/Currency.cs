@@ -11,6 +11,7 @@ public class Currency : MonoBehaviour
 
     private void Awake()
     {
+        Managers.Game.currency = this;
         panel = FindFirstObjectByType<CurrencyPanel>();
     }
 

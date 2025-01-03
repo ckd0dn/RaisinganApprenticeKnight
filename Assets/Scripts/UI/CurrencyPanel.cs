@@ -10,7 +10,7 @@ public class CurrencyPanel : MonoBehaviour
 
     public void UpdateCrurrencyUI()
     {
-        goldText.text = GameManager.Instance.currency.GetGold().ToString();
-        crystalText.text = GameManager.Instance.currency.GetCrystal().ToString();
+        goldText.text = Managers.Game.currency.GetGold().ToString();
+        crystalText.text = Managers.Game.currency.GetCrystal().ToString();
     }
 }
