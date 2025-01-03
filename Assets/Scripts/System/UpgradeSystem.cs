@@ -67,6 +67,8 @@ public class UpgradeSystem : MonoBehaviour
     public float currentTotalDamage;
 
     private StatHandler playerStat;
+    // 배수 적용
+    private int multiplier = 1;
 
     private void Awake()
     {
@@ -181,34 +183,45 @@ public class UpgradeSystem : MonoBehaviour
     {
         hpLvText.text = $"Lv {hpLevel}";
         hpValueText.text = currentHp.ToString();
-        hpPriceText.text = hpUpgradeCost.ToString();
+        hpPriceText.text = (hpUpgradeCost * multiplier).ToString();
     }
 
     private void UpdateAtkUI()
     {
         atkLvText.text = $"Lv {atkLevel}";
         atkValueText.text = currentAtk.ToString();
-        atkPriceText.text = atkUpgradeCost.ToString();
+        atkPriceText.text = (atkUpgradeCost * multiplier).ToString();
     }
 
     private void UpdateCriticalChanceUI()
     {
         criticalChanceLvText.text = $"Lv {criticalChanceLevel}";
         criticalChanceValueText.text = $"{currentCriticalChance*100}%";
-        criticalChancePriceText.text = criticalChanceUpgradeCost.ToString();
+        criticalChancePriceText.text = (criticalChanceUpgradeCost * multiplier).ToString();
     }
 
     private void UpdateCriticalDamageUI()
     {
         criticalDamageLvText.text = $"Lv {criticalDamageLevel}";
         criticalDamageValueText.text = $"{currentCriticalDamage * 100}%";
-        criticalDamagePriceText.text = criticalDamageUpgradeCost.ToString();
+        criticalDamagePriceText.text = (criticalDamageUpgradeCost * multiplier).ToString();  
     }
 
     private void UpdateTotalDamageUI()
     {
         totalDamageLvText.text = $"Lv {totalDamageLevel}";
         totalDamageValueText.text = $"{currentTotalDamage * 100}%";  
-        totalDamagePriceText.text = totalDamageUpgradeCost.ToString();
+        totalDamagePriceText.text = (totalDamageUpgradeCost * multiplier).ToString(); 
+    }
+
+    public void MultiplyUpgrade(int amount)
+    {
+        multiplier = amount;
+        // 누르면 배수만큼 골드량이 증가하고 UI 표시되어야함 
+        UpdateHpUI();
+        UpdateAtkUI();
+        UpdateCriticalChanceUI();
+        UpdateCriticalDamageUI();
+        UpdateTotalDamageUI();
     }
 }
