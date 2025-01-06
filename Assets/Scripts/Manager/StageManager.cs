@@ -11,7 +11,7 @@ public class StageManager
     public bool isBossWave = false;
     public MonsterObjPool MonsterObjPool { get; set; }
     public int CurrentMonsterCount { get; set; } = 0;                          // 현재 몬스터 수
-    private int monsterWaveCount = 20;          // 웨이브 몬스터 수
+    private int monsterWaveCount = 5;          // 웨이브 몬스터 수
     private int monstersPerWaveIncrease = 5;    // 웨이브별 몬스터 증가량
     int monsterNum = 1;                                          // 몬스터 번호
     int bossMonsterNum = 101;                                    // 보스몬스터 번호
