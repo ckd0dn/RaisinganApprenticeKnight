@@ -6,18 +6,32 @@ public class BossMonster : Monster
 {
     private MonsterStateMachine stateMachine;
     private BossUI bossUI;
-    public Sprite bossSprite; 
+    public Sprite bossSprite;
 
-    protected override void Awake()
+
+
+    public override void Init()
     {
-        base.Awake();
+        ObjectType = Define.ObjectType.BossMonster;
 
-        bossUI =  FindFirstObjectByType<BossUI>();
+        bossUI = FindFirstObjectByType<BossUI>();
         GetBodySprite();
 
         stateMachine = new MonsterStateMachine(this);
         stateMachine.MoveState.distance = 3;
     }
+
+
+    //protected override void Awake()
+    //{
+    //    base.Awake();
+
+    //    bossUI =  FindFirstObjectByType<BossUI>();
+    //    GetBodySprite();
+
+    //    stateMachine = new MonsterStateMachine(this);
+    //    stateMachine.MoveState.distance = 3;
+    //}
 
     private void Start()
     {

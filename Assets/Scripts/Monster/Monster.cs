@@ -3,9 +3,8 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Monster : MonoBehaviour
+public class Monster : BaseController
 {
-
     public Player player;
 
     [SerializeField] private float speed;
@@ -19,8 +18,10 @@ public class Monster : MonoBehaviour
 
     public bool isDie = false;
 
-    protected virtual void Awake()
+    public override void Init()
     {
+        ObjectType = Define.ObjectType.Monster;
+
         player = FindFirstObjectByType<Player>();
         healthSystem = GetComponent<HealthSystem>();
         statHandler = GetComponent<StatHandler>();
@@ -28,7 +29,6 @@ public class Monster : MonoBehaviour
         monsterHpBar = GetComponentInChildren<MonsterHpBar>();
         animationData = new MonsterAnimationData();
         animationData.Init();
-
         stateMachine = new MonsterStateMachine(this);
     }
 
